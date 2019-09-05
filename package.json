@@ -8,12 +8,13 @@
     "type": "git",
     "url": "http://github.com/michaelord/block.git"
   },
-  "devDependencies": {
+  "devDependencies": {},
+  "author": "michaelord",
+  "keywords": [],
+  "dependencies": {
     "components/layout": "http://github.com/michaelord/layout.git",
     "components/editable": "http://github.com/michaelord/editable.git",
     "components/types": "http://github.com/michaelord/types.git",
     "components/libs": "http://github.com/michaelord/libs.git"
-  },
-  "author": "michaelord",
-  "keywords": []
+  }
 }
