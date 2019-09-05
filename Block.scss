@@ -1,0 +1,75 @@
+.block {
+	$parent: &;
+
+	position: relative;
+	// overflow: hidden;
+
+	flex-direction: column;
+	justify-content: center;
+
+	padding: var(--space-lg) 0;
+
+	&--pad-none {
+		padding: 0;
+	}
+
+	&--pad-md {
+		padding: var(--space-xl) 0;
+	}
+
+	&--pad-lg {
+		padding: var(--space-xxl) 0;
+	}
+
+	&--pad-xl {
+		padding: var(--space-xxxl) 0;
+	}
+
+	&--pad-screen {
+		min-height: 100vh;
+
+		display: flex;
+	}
+
+	&__media {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		overflow: hidden;
+		pointer-events: none;
+		line-height: 1;
+
+		img,
+		video {
+			position: relative;
+			display: block;
+			top: 50%;
+			left: 50%;
+			transform: translateX(-50%) translateY(-50%);
+			min-height: 100%;
+			min-width: 100%;
+			height: auto;
+			width: auto;
+			max-width: none;
+
+			@supports (object-fit: cover) {
+				height: 100%;
+				width: 100%;
+				object-fit: cover;
+			}
+
+			@supports (object-fit: cover) and (-ms-ime-align: auto) {
+				// fix issue on Edge - object-fit not working for video elements
+				height: auto;
+				width: auto;
+			}
+		}
+	}
+
+	&__content {
+		position: relative;
+		z-index: 2;
+	}
+}
