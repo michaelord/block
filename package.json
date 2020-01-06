@@ -1,20 +1,20 @@
 {
-  "name": "block",
-  "private": true,
-  "description": "...",
-  "version": "0.1.0",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "http://github.com/michaelord/block.git"
-  },
-  "devDependencies": {},
-  "author": "michaelord",
-  "keywords": [],
-  "dependencies": {
-    "components/layout": "http://github.com/michaelord/layout.git",
-    "components/editable": "http://github.com/michaelord/editable.git",
-    "components/types": "http://github.com/michaelord/types.git",
-    "components/libs": "http://github.com/michaelord/libs.git"
-  }
+	"name": "block",
+	"private": true,
+	"description": "...",
+	"version": "0.1.0",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "http://github.com/michaelord/block.git"
+	},
+	"devDependencies": {},
+	"author": "michaelord",
+	"keywords": [],
+	"dependencies": {
+		"components/editable": "http://github.com/michaelord/editable.git",
+		"components/layout": "http://github.com/michaelord/layout.git",
+		"components/libs": "http://github.com/michaelord/libs.git",
+		"components/types": "http://github.com/michaelord/types.git"
+	}
 }

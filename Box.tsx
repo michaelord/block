@@ -1,18 +1,17 @@
-import * as React from 'react';
-
+import {getModifiers} from 'components/libs';
+import {Padding, Theme} from 'components/types';
+import React, {memo} from 'react';
 import './Box.scss';
 
-import {getModifiers} from 'components/libs';
+import * as Types from 'components/types';
 
-import {Padding, Theme} from 'components/types';
-
-type BoxProps = {
-	children: React.ReactNode;
-	theme?: Theme;
-	pad?: Padding;
+export type BoxProps = {
+	children: Types.Children;
+	theme?: Types.Theme;
+	pad?: Types.Padding;
 };
 
-export const Box = (props: BoxProps) => {
+export const Box = memo((props: BoxProps) => {
 	const {pad = 'default', theme = 'default', children} = props;
 
 	const base: string = 'box';
@@ -25,4 +24,4 @@ export const Box = (props: BoxProps) => {
 	};
 
 	return <div {...atts}>{children}</div>;
-};
+});

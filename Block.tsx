@@ -1,40 +1,68 @@
-import * as React from 'react';
-
-import {Container} from 'components/layout';
 import {Media, MediaProps} from 'components/editable';
-import {Size} from 'components/types';
+import {Container} from 'components/layout';
 import {getModifiers} from 'components/libs';
-import {Theme} from 'components/types';
-
+import * as Types from 'components/types';
+import React, {memo, useRef} from 'react';
 import './Block.scss';
 
-type BlockProps = {
+import {useIntersection} from 'components/hooks';
+
+type Padding = 'none' | 'md' | 'lg' | 'xl' | 'screen';
+
+export type BlockProps = {
+	id?: Types.Text;
+	theme?: Types.Theme;
 	header?: React.ReactNode;
 	footer?: React.ReactNode;
-	children: React.ReactNode;
+	children: Types.Children;
 	media?: MediaProps;
-	pad?: string;
-	theme?: Theme;
-	width?: Size;
+	pad?: Padding;
+	hasOverlay?: boolean;
+	width?: Types.Size;
+	ref?: any;
+	animation?: Types.Animation;
 };
 
-export const Block = (props: BlockProps) => {
+export const Block = memo((props: BlockProps): any => {
 	const base: string = 'block';
 
-	const {children, media, pad = 'default', theme, width = 'default', header, footer} = props;
+	const {
+		id,
+		children,
+		media,
+		pad = 'default',
+		theme = 'inherit',
+		width = 'default',
+		header,
+		footer,
+		hasOverlay = false,
+		animation = 'none',
+		ref = useRef(null),
+	} = props;
+
+	const intersecting = useIntersection(ref, {
+		threshold: 0.5,
+		// once:true
+	});
 
 	const atts = {
 		className: getModifiers(base, {
 			pad: `pad-${pad}`,
+			overlay: hasOverlay,
+			active: intersecting,
 		}),
-		'data-theme': theme || 'default',
+		'data-theme': theme,
+		ref,
+		id,
 	};
 
 	return (
-		<div {...atts}>
+		<section {...atts}>
 			{media && (
-				<div className={`${base}__media`}>
-					<Media {...media} />
+				<div className={`testmedia ${base}__media`} data-animation={animation}>
+					<div>
+						<Media {...media} />
+					</div>
 				</div>
 			)}
 			<div className={`${base}__content`}>
@@ -46,6 +74,6 @@ export const Block = (props: BlockProps) => {
 					{footer}
 				</Container>
 			</div>
-		</div>
+		</section>
 	);
-};
+});
